@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jason Pan - First-year CS student portfolio">
+    <title>Jason Pan | CS Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbarContainer">
+            <!-- Logo -->
+            <a href="#home" class="headerLogo">Jason<span>Pan</span></a>
+
+            <!-- Nav Links (hidden on mobile) -->
+            <div class="navlinks" id="navlinks">
+                <a href="#home" class="navlink">Home</a>
+                <a href="#projects" class="navlink">Projects</a>
+                <a href="#experience" class="navlink">Experience</a>
+                <a href="#contact" class="navlink">Contact</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Home) -->
+    <section class="heroSection" id="home">
+        <div class="heroContainer">
+            <div class="heroText">
+                <h1 class="heroTitle">Hi, I'm <span>Jason Pan</span></h1>
+                <h2 class="heroSubtitle">Aspiring Full-Stack Developer</h2>
+                <p class="heroDescription">
+                    I'm a first-year Computer Science student at the University of Waterloo 
+                    passionate about web development. Currently, I'm building cool projects 
+                    and preparing for co-op opportunities. Besides coding, I enjoy playing 
+                    badminton competitively and tackling on the strategic challenges of chess!!
+                </p>
+
+                <div class="heroButtons">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="heroImgWrapper">
+                <img src="https://i.pinimg.com/474x/91/77/97/91779771e0c323b769b5468319754d3a.jpg?nii=t" 
+                     alt="Jason Pan" class="heroImg">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projectSection" id="projects">
+        <div class="container">
+            <h2 class="sectionTitle">My <span>Projects</span></h2>
+
+            <div class="projectGrid">
+                <!-- Project 1 -->
+                <div class="projectCard">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Project">
+                    <div class="projectInfo">
+                        <div class="projectTags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <h3>Portfolio Website</h3>
+                        <p>My personal portfolio showcasing my projects and skills.</p>
+                        <div class="projectLinks">
+                            <a href="#" class="projectLink">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 Pokémon Battle -->
+                <div class="projectCard">
+                    <img src="Pokemon Battle.png" alt="Pokémon Battle Royale">
+                    <div class="projectInfo">
+                        <div class="projectTags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pygame</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                        <h3>Pokémon Battle Royale</h3>
+                        <p> A turn-based Pokémon battle simulator with features including random critical hits 
+                            and misses, 6 unique Pokémon with special attributes, AI opponent logic, 
+                            health management systems, and a user-friendly GUI.</p>
+                        <div class="projectLinks">
+                            <a href="#" class="projectLink">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 Frogger -->
+                <div class="projectCard">
+                    <img src="Frogger.png" alt="Frogger Game">
+                    <div class="projectInfo">
+                        <div class="projectTags">
+                            <span class="tag">Processing</span>
+                            <span class="tag">OOP</span>
+                        </div>
+                        <h3>Frogger Game</h3>
+                        <p> A complete remake of the classic arcade game featuring collision detection, 
+                            moving vehicles/logs, multiple lives system, score/time tracking, and 
+                            simple WASD movement mechanics.</p>
+                        <div class="projectLinks">
+                            <a href="#" class="projectLink">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experienceSection" id="experience">
+        <div class="container">
+            <h2 class="sectionTitle">Experience & <span>Education</span></h2>
+            
+            <div class="timeline">
+                <!-- Minecraft Instructor -->
+                <div class="timelineItem">
+                    <div class="timelineIcon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="timelineContent">
+                        <span class="timelineDate">July 2025</span>
+                        <h3>Minecraft Game Development Coding Instructor</h3>
+                        <p class="timelineRole">Alberta Junior AI Training Center</p>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="timelineItem">
+                    <div class="timelineIcon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timelineContent">
+                        <span class="timelineDate">September 2025 - Present</span>
+                        <h3>University of Waterloo</h3>
+                        <p class="timelineRole">Bachelor of Computer Science (Honours with Co-op)</p>
+                        <ul>
+                            <li>Relevant courses: Designing Functional Programs (CS 135)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Future -->
+                <div class="timelineItem future">
+                    <div class="timelineIcon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timelineContent">
+                        <span class="timelineDate">May 2026</span>
+                        <h3>Looking for Internships</h3>
+                        <p class="timelineRole">Open to Opportunities</p>
+                        <ul>
+                            <li>Seeking a 4-month internship position to apply my skills and learn from industry professionals.</li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contactSection" id="contact">
+        <div class="container">
+            <h2 class="sectionTitle">Get In <span>Touch</span></h2>
+            <p class="sectionSubtitle">Feel free to reach out!</p>
+
+            <div class="contactGrid">
+                <div class="contactCard">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <a href="mailto:j98pan@uwaterloo.ca">j98pan@uwaterloo.ca</a>
+                    </div>
+                </div>
+
+                <div class="contactCard">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/devjsonpan" target="_blank">@devjsonpan</a>
+                    </div>
+                </div>
+
+                <div class="contactCard">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/jason-pan-b5b5b729b/" target="_blank">Jason Pan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Jason Pan. Built with HTML, CSS, and JavaScript.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
