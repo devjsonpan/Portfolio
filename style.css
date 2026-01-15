@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #6366f1;      /* Main color (purple-blue) */
+    --primary-dark: #4f46e5; /* Darker version for hover */
+    --dark: #0f172a;         /* Dark background */
+    --card: #1e293b;         /* Card background */
+    --text: #f1f5f9;         /* Main text color (light) */
+    --text-muted: #94a3b8;   /* Lighter text for descriptions */
+    --border: #334155;       /* Border color */
+    --navbar-height: 80px;   /* Added: navbar height variable */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto;    
+    padding: 0 2rem;   
+}
+
+.navbar {
+    position: fixed;    
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95); 
+    backdrop-filter: blur(10px);        
+    padding: 1rem 2rem;
+    z-index: 1000;      
+    border-bottom: 1px solid var(--border);
+    height: var(--navbar-height);
+}
+
+.navbar.scrolled {
+    padding: 0.75rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navbarContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .navbarContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+}
+
+.headerLogo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    z-index: 1001;
+}
+
+@media (min-width: 768px) {
+    .headerLogo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .headerLogo {
+        display: none;
+    }
+    
+    .navbarContainer {
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+.headerLogo span {
+    color: var(--primary);
+}
+
+.navlinks {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navlink {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.navlink:hover,
+.navlink.active {
+    color: var(--primary);
+}
+
+@media (min-width: 768px) {
+    .navlinks {
+        gap: 2rem;
+        justify-content: flex-end;
+    }
+    
+    .navlink {
+        font-size: 1rem;
+    }
+}
+
+.heroSection {
+    min-height: 100vh;        
+    display: flex;
+    align-items: center;      
+    padding-top: var(--navbar-height);
+}
+
+.heroContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0; 
+}
+
+.heroText {
+    text-align: center;
+    max-width: 700px;
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.heroTitle span {
+    color: var(--primary);
+}
+
+.heroSubtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.heroDescription {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
+
+.btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s; 
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px); 
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.heroImgWrapper {
+    width: 350px;
+    height: 350px;
+}
+
+.heroImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;     
+    object-fit: cover;     
+    border: 4px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    .heroContainer {
+        flex-direction: row;      
+        justify-content: space-between;
+        text-align: left;
+    }
+    .heroText {
+        text-align: left;
+    }
+    .heroButtons {
+        justify-content: flex-start;
+    }
+    .heroTitle {
+        font-size: 3.5rem;
+    }
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle span {
+    color: var(--primary);
+}
+
+.sectionSubtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+}
+
+.projectSection {
+    padding: 5rem 2rem;
+    background: var(--card);
+}
+
+.projectGrid {
+    display: grid;
+    grid-template-columns: 1fr;  
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .projectGrid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    .projectGrid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+.projectCard {
+    background: var(--dark);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectCard:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.projectCard img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.projectInfo {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectTags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.projectInfo h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.projectInfo p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.projectLinks {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.projectLink {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.projectLink:hover {
+    text-decoration: underline;
+}
+
+.experienceSection {
+    padding: 5rem 2rem;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timelineItem {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timelineIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.timelineIcon i {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.timelineContent {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    flex: 1; 
+}
+
+.timelineDate {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.timelineContent h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.timelineRole {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.timelineContent ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timelineContent li {
+    color: var(--text-muted);
+    padding-left: 1.5rem;
+    margin-top: 0.75rem;
+    position: relative;
+}
+
+.timelineContent li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.timelineItem.future .timelineIcon {
+    background: transparent;
+    border: 2px dashed var(--primary);
+}
+
+.timelineItem.future .timelineContent {
+    border-style: dashed;
+}
+
+.contactSection {
+    padding: 5rem 2rem;
+    background: var(--card);
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+@media (min-width: 768px) {
+    .contactGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.contactCard {
+    background: var(--dark);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.contactCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.contactCard i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.contactCard h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.contactCard a {
+    color: var(--text-muted);
+    text-decoration: none;
+    word-break: break-word; 
+}
+
+.contactCard a:hover {
+    color: var(--primary);
+}
+
+.footer {
+    background: var(--dark);
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.footer p {
+    color: var(--text-muted);
+}
+
+@media (max-width: 767px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+    
+    .heroSubtitle {
+        font-size: 1.25rem;
+    }
+    
+    .heroDescription {
+        font-size: 1rem;
+    }
+    
+    .heroImgWrapper {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .sectionTitle {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .projectSection,
+    .experienceSection,
+    .contactSection {
+        padding: 4rem 1.5rem;
+    }
+    
+    .heroContainer {
+        gap: 6rem;
+        padding: 1.5rem 0;
+    }
+    
+    .navbar {
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .navlinks {
+        gap: 2rem;
+    }
+}
