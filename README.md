@@ -32,16 +32,16 @@ My personal portfolio website showcasing my projects, experience, and skills as 
 
 ```
 Portfolio/
-├── index.html          
-├── style.css           
-├── script.js             
-├── images/            
+├── index.html        # Main HTML file                 
+├── style.css         # All styles
+├── script.js         # JavaScript functionality
+├── images/           # Project screenshots and favicons
 │   ├── Study Tracker Session.png
 │   ├── Study Tracker Task.png
 │   ├── Pokemon Battle.png
 │   ├── Frogger.png
 │   └── ... (favicons)
-└── README.md           
+└── README.md         # This file
 ```
 
 ## 🚀 Running Locally
