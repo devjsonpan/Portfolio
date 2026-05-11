@@ -75,10 +75,19 @@
                 <div class="projectCard">
                     <img src="images/Study Tracker.png" alt="Study Tracker">
                     <div class="projectInfo">
-                        <div class="projectTags">
-                            <span class="tag">Flask</span>
-                            <span class="tag">SQLite</span>
-                            <span class="tag">HTML/CSS</span>
+                        <div class="projectTagsWrapper">
+                            <button class="tagScrollBtn left" type="button" aria-label="Scroll tags left">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="projectTags" role="group" aria-label="Project technologies">
+                                <span class="tag">Flask</span>
+                                <span class="tag">SQLAlchemy</span>
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <button class="tagScrollBtn right" type="button" aria-label="Scroll tags right">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <h3>Study Tracker</h3>
                         <p>A full-stack web application with user authentication for students to track productivity. Log study sessions, create organized notes,
@@ -96,11 +105,19 @@
                 <div class="projectCard">
                     <img src="images/Pokemon Battle.png" alt="Pokémon Battle Royale">
                     <div class="projectInfo">
-                        <div class="projectTags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Pygame</span>
-                            <span class="tag">OOP</span>
-                            <span class="tag">API</span>
+                        <div class="projectTagsWrapper">
+                            <button class="tagScrollBtn left" type="button" aria-label="Scroll tags left">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="projectTags" role="group" aria-label="Project technologies">
+                                <span class="tag">Python</span>
+                                <span class="tag">Pygame</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">API</span>
+                            </div>
+                            <button class="tagScrollBtn right" type="button" aria-label="Scroll tags right">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <h3>Pokémon Battle Royale</h3>
                         <p> A turn-based Pokémon battle simulator against an AI opponent. It features 6 Pokémon with unique special status effects, 
@@ -117,9 +134,17 @@
                 <div class="projectCard">
                     <img src="images/Frogger.png" alt="Frogger Game">
                     <div class="projectInfo">
-                        <div class="projectTags">
-                            <span class="tag">Processing</span>
-                            <span class="tag">Game Mechanics</span>
+                        <div class="projectTagsWrapper">
+                            <button class="tagScrollBtn left" type="button" aria-label="Scroll tags left">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="projectTags" role="group" aria-label="Project technologies">
+                                <span class="tag">Processing</span>
+                                <span class="tag">Game Mechanics</span>
+                            </div>
+                            <button class="tagScrollBtn right" type="button" aria-label="Scroll tags right">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <h3>Frogger Game</h3>
                         <p> A simplified remake of the classic 1981 arcade game "Frogger". It features collision detection, 
@@ -151,6 +176,10 @@
                         <span class="timelineDate">July 2025</span>
                         <h3>Minecraft Game Development Coding Instructor</h3>
                         <p class="timelineRole">Alberta Junior AI Training Center</p>
+                        <ul>
+                            <li>Taught an introductory programming course using Minecraft Java Edition and block-based coding.</li>
+                            <li>Introduced core CS concepts and led hands-on projects focused on logic and 3D problem solving.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -165,7 +194,10 @@
                         <p class="timelineRole">Bachelor of Computer Science (Honours with Co-op)</p>
                         <ul>
                             <li>Relevant courses: 
+                                <br>
                                 <a href="https://uwflow.com/course/cs135" target="_blank" class="courseLink">Designing Functional Programs (CS 135)</a>
+                                <br>
+                                <a href="https://uwflow.com/course/cs136" target="_blank" class="courseLink">Elementary Algorithm Design and Data Abstraction (CS 136)</a>
                             </li>
                         </ul>
                     </div>
@@ -230,6 +262,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

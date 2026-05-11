@@ -85,3 +85,30 @@ const fadeObserver = new IntersectionObserver(function(entries) {
 fadeCards.forEach(function(card) {
   fadeObserver.observe(card);
 });
+
+// Project tag scroller buttons
+const tagWrappers = document.querySelectorAll('.projectTagsWrapper');
+
+tagWrappers.forEach(wrapper => {
+  const tagRow = wrapper.querySelector('.projectTags');
+  const leftBtn = wrapper.querySelector('.tagScrollBtn.left');
+  const rightBtn = wrapper.querySelector('.tagScrollBtn.right');
+  const scrollAmount = 140;
+
+  const updateButtons = () => {
+    leftBtn.disabled = tagRow.scrollLeft <= 0;
+    rightBtn.disabled = tagRow.scrollLeft + tagRow.clientWidth >= tagRow.scrollWidth - 1;
+  };
+
+  leftBtn.addEventListener('click', () => {
+    tagRow.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    tagRow.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  tagRow.addEventListener('scroll', updateButtons);
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
+});
