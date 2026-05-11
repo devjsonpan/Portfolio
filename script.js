@@ -37,27 +37,33 @@ smoothScrollLinks.forEach(function(link) {
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.navlink');
 
-window.addEventListener('scroll', function() {
+const updateActiveLink = () => {
   let currentSection = '';
   const scrollPosition = window.pageYOffset;
-  
-  sections.forEach(function(section) {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    
-    if (scrollPosition >= sectionTop - 200) {
-      currentSection = section.getAttribute('id');
-    }
-  });
-  
+  const bottomThreshold = document.documentElement.scrollHeight - window.innerHeight - 10;
+
+  if (scrollPosition >= bottomThreshold) {
+    currentSection = 'contact';
+  } else {
+    sections.forEach(function(section) {
+      const sectionTop = section.offsetTop;
+      if (scrollPosition >= sectionTop - 200) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+  }
+
   navLinks.forEach(function(link) {
     link.classList.remove('active');
-    
     if (link.getAttribute('href') === '#' + currentSection) {
       link.classList.add('active');
     }
   });
-});
+};
+
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('resize', updateActiveLink);
+updateActiveLink();
 
 // Fade-in animation on scroll
 const fadeCards = document.querySelectorAll('.projectCard, .contactCard, .timelineItem');
@@ -85,6 +91,24 @@ const fadeObserver = new IntersectionObserver(function(entries) {
 fadeCards.forEach(function(card) {
   fadeObserver.observe(card);
 });
+
+// Contact form send behavior
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = contactForm.querySelector('[name="name"]').value.trim();
+    const email = contactForm.querySelector('[name="email"]').value.trim();
+    const message = contactForm.querySelector('[name="message"]').value.trim();
+
+    const subject = encodeURIComponent(`Portfolio message from ${name || 'visitor'}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+    window.location.href = `mailto:j98pan@uwaterloo.ca?subject=${subject}&body=${body}`;
+  });
+}
 
 // Project tag scroller buttons
 const tagWrappers = document.querySelectorAll('.projectTagsWrapper');
