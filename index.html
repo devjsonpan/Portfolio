@@ -257,11 +257,12 @@
             <div class="contactFormCard">
                 <h3>Send a message</h3>
                 <p>I'll get back to you as soon as possible!</p>
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/mojryjzp" method="POST">
                     <input type="text" name="name" placeholder="Your name" required>
                     <input type="email" name="email" placeholder="Your email" required>
                     <textarea name="message" rows="6" placeholder="Your message" required></textarea>
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p id="formStatus" class="formStatus" aria-live="polite"></p>
                 </form>
             </div>
         </div>

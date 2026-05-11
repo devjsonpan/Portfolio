@@ -592,15 +592,39 @@ body {
     gap: 1rem;
 }
 
+@media (min-width: 768px) {
+    .contactFormCard form {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .contactFormCard textarea {
+        grid-column: 1 / -1;
+    }
+
+    .contactFormCard button {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
 .contactFormCard input,
 .contactFormCard textarea {
     width: 100%;
-    padding: 0.9rem 1rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
     background: #111827;
     color: var(--text);
     font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contactFormCard input:focus,
+.contactFormCard textarea:focus {
+    outline: none;
+    border-color: rgba(99, 102, 241, 0.85);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
 }
 
 .contactFormCard input::placeholder,
@@ -617,6 +641,22 @@ body {
     width: fit-content;
     border: none;
     margin-top: 0.25rem;
+    padding: 0.95rem 1.75rem;
+}
+
+.formStatus {
+    margin: 0.75rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-height: 1.5rem;
+}
+
+.formStatus.success {
+    color: #22c55e;
+}
+
+.formStatus.error {
+    color: #f87171;
 }
 
 .footer {

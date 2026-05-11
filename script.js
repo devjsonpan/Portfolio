@@ -96,18 +96,60 @@ fadeCards.forEach(function(card) {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = 'Sending...';
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                contactForm.reset();
+                showFormStatus('✅ Message sent!', 'success');
+            } else {
+                const data = await response.json();
+                const errorMessage = data?.errors?.[0]?.message || 'Oops! Something went wrong. Please try again.';
+                showFormStatus(`❌ ${errorMessage}`, 'error');
+            }
+        } catch (error) {
+            showFormStatus('❌ Network error. Please check your connection.', 'error');
+        } finally {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }
+    });
+}
 
-    const name = contactForm.querySelector('[name="name"]').value.trim();
-    const email = contactForm.querySelector('[name="email"]').value.trim();
-    const message = contactForm.querySelector('[name="message"]').value.trim();
+function showFormStatus(message, type) {
+    const statusEl = document.getElementById('formStatus');
+    if (statusEl) {
+        statusEl.textContent = message;
+        statusEl.classList.remove('success', 'error');
+        statusEl.classList.add(type);
 
-    const subject = encodeURIComponent(`Portfolio message from ${name || 'visitor'}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-
-    window.location.href = `mailto:j98pan@uwaterloo.ca?subject=${subject}&body=${body}`;
-  });
+        // Clear message after 5 seconds
+        clearTimeout(statusEl._clearTimeout);
+        statusEl._clearTimeout = setTimeout(() => {
+            statusEl.textContent = '';
+            statusEl.classList.remove('success', 'error');
+        }, 5000);
+    }
 }
 
 // Project tag scroller buttons
