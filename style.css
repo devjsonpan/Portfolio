@@ -793,7 +793,7 @@ body {
 }
 
 .timelineContent li::before {
-    content: '▹';
+    content: '\25B9';
     position: absolute;
     left: 0;
     color: var(--primary);
