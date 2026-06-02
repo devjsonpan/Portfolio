@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="cursorDot" aria-hidden="true"></div>
+    <div class="starfield" aria-hidden="true"></div>
+    <div class="pageContent">
     
     <!-- NAVIGATION BAR -->
     <nav class="navbar" id="navbar">
@@ -29,6 +32,7 @@
                 <a href="#projects" class="navlink">Projects</a>
                 <a href="#experience" class="navlink">Experience</a>
                 <a href="#contact" class="navlink">Contact</a>
+                <span class="navIndicator" aria-hidden="true"></span>
             </div>
         </div>
     </nav>
@@ -51,9 +55,9 @@
                         View Projects
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="btn btn-outline">
-                        Contact Me
-                        <i class="fas fa-envelope"></i>
+                    <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                        Resume
+                        <i class="fas fa-download"></i>
                     </a>
                 </div>
             </div>
@@ -167,6 +171,7 @@
             <h2 class="sectionTitle">Experience & <span>Education</span></h2>
             
             <div class="timeline">
+                <div class="timelineRocket" aria-hidden="true"><i class="fas fa-rocket"></i></div>
                 <!-- Minecraft Instructor -->
                 <div class="timelineItem">
                     <div class="timelineIcon">
@@ -175,7 +180,7 @@
                     <div class="timelineContent">
                         <span class="timelineDate">July 2025</span>
                         <h3>Minecraft Game Development Coding Instructor</h3>
-                        <p class="timelineRole">Alberta Junior AI Training Center</p>
+                        <p class="timelineRole">Alberta Junior AI Training Center <span style="color: var(--text-muted); font-weight: 400;">· Calgary, AB</span></p>
                         <ul>
                             <li>Taught an introductory programming course using Minecraft Java Edition and block-based coding.</li>
                             <li>Introduced core CS concepts and led hands-on projects focused on logic and 3D problem solving.</li>
@@ -192,30 +197,23 @@
                         <span class="timelineDate">September 2025 - April 2030</span>
                         <h3>University of Waterloo</h3>
                         <p class="timelineRole">Bachelor of Computer Science (Honours with Co-op)</p>
-                        <ul>
-                            <li>Relevant courses: 
-                                <br>
-                                <a href="https://uwflow.com/course/cs135" target="_blank" class="courseLink">Designing Functional Programs (CS 135)</a>
-                                <br>
-                                <a href="https://uwflow.com/course/cs136" target="_blank" class="courseLink">Elementary Algorithm Design and Data Abstraction (CS 136)</a>
-                            </li>
-                        </ul>
+                        <p class="courseLabel">Relevant courses</p>
+                        <div class="courseTags">
+                            <a href="https://uwflow.com/course/cs135" target="_blank" class="courseTag" title="Designing Functional Programs">CS 135</a>
+                            <a href="https://uwflow.com/course/cs136" target="_blank" class="courseTag" title="Elementary Algorithm Design and Data Abstraction">CS 136</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Future -->
-                <div class="timelineItem future">
+                <!-- Internship -->
+                <div class="timelineItem">
                     <div class="timelineIcon">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="timelineContent">
                         <span class="timelineDate">May 2026 - Present</span>
                         <h3>Full Stack Intern</h3>
-                        <p class="timelineRole">Garde-Robe</p>
-                        <!-- <ul>
-                            <li>Seeking a 4-month internship position to apply my skills and learn from industry professionals.</li>
-                        </ul> -->
-                        <p></p>
+                        <p class="timelineRole">Garde-Robe <span style="color: var(--text-muted); font-weight: 400;">· New York, NY (Remote)</span></p>
                     </div>
                 </div>
             </div>
@@ -272,6 +270,7 @@
     <footer class="footer">
         <p>© 2026 Jason Pan. All rights reserved.</p>
     </footer>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>

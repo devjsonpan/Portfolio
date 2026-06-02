@@ -1,3 +1,111 @@
+﻿// Starfield background animation
+const starfield = document.querySelector('.starfield');
+
+if (starfield) {
+  const starPalette = [
+    { color: 'rgba(255,255,255,0.92)',   glow: 'rgba(255,255,255,0.5)',   glowSize: '4px'  },
+    { color: 'rgba(255,255,255,0.60)',   glow: 'rgba(255,255,255,0.25)',  glowSize: '2px'  },
+    { color: 'rgba(147,197,253,0.92)',   glow: 'rgba(147,197,253,0.6)',   glowSize: '6px'  },
+    { color: 'rgba(196,181,253,0.90)',   glow: 'rgba(196,181,253,0.55)',  glowSize: '6px'  },
+    { color: 'rgba(254,240,138,0.85)',   glow: 'rgba(254,240,138,0.45)',  glowSize: '5px'  },
+  ];
+
+  const starCount = 100;
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('span');
+    star.className = 'star';
+
+    const sizeRoll = Math.random();
+    let size;
+    if (sizeRoll < 0.25)      size = 0.5 + Math.random() * 1;
+    else if (sizeRoll < 0.82) size = 1.2 + Math.random() * 1.3;
+    else                      size = 2.5 + Math.random() * 1.5;
+
+    const roll = Math.random();
+    const palette = roll < 0.40 ? starPalette[0]
+                  : roll < 0.60 ? starPalette[1]
+                  : roll < 0.75 ? starPalette[2]
+                  : roll < 0.90 ? starPalette[3]
+                  :               starPalette[4];
+
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDuration = `${3 + Math.random() * 4}s`;
+    star.style.animationDelay = `${Math.random() * 6}s`;
+    star.style.setProperty('--star-color', palette.color);
+    star.style.setProperty('--star-glow-color', palette.glow);
+    star.style.setProperty('--star-glow-size', palette.glowSize);
+    starfield.appendChild(star);
+  }
+
+  const shootingCount = 3;
+  for (let i = 0; i < shootingCount; i++) {
+    const shootingStar = document.createElement('span');
+    shootingStar.className = 'shooting-star';
+    shootingStar.style.left = `${Math.random() * 75}%`;
+    shootingStar.style.top = `${Math.random() * 40}%`;
+    shootingStar.style.animationDelay = `${i * 7 + Math.random() * 5}s`;
+    shootingStar.style.animationDuration = `${3 + Math.random() * 1.5}s`;
+    // Tight angle range 140â€“150Â°: steep downward-right, all stars look the same direction
+    const angle = 140 + Math.random() * 10;
+    const dist = 1300 + Math.random() * 500;
+    const rad = angle * Math.PI / 180;
+    shootingStar.style.setProperty('--shoot-angle', `${angle}deg`);
+    shootingStar.style.setProperty('--shoot-dx', `${Math.sin(rad) * dist}px`);
+    shootingStar.style.setProperty('--shoot-dy', `${-Math.cos(rad) * dist}px`);
+    starfield.appendChild(shootingStar);
+  }
+
+  const spaceObjects = [
+    { type: 'planet',   left: '12%', top: '18%', size: 110, delay: '0s', parallax: 0.05 },
+    { type: 'moon',     left: '80%', top: '10%', size: 42,  delay: '2s', parallax: 0.03 },
+    { type: 'asteroid', left: '58%', top: '28%', size: 22,  delay: '3s', parallax: 0.08 },
+    { type: 'asteroid', left: '30%', top: '75%', size: 18,  delay: '5s', parallax: 0.06 }
+  ];
+
+  spaceObjects.forEach(object => {
+    // Wrapper handles position + parallax; inner span keeps CSS float animation
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = `position:absolute;left:${object.left};top:${object.top};width:${object.size}px;height:${object.size}px;will-change:transform;`;
+    wrapper.dataset.parallax = object.parallax;
+
+    const el = document.createElement('span');
+    el.className = `space-object ${object.type}`;
+    el.style.cssText = `width:${object.size}px;height:${object.size}px;position:absolute;left:0;top:0;`;
+    el.style.animationDelay = object.delay;
+
+    wrapper.appendChild(el);
+    starfield.appendChild(wrapper);
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.pageYOffset;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      el.style.transform = `translateY(${-scrollY * parseFloat(el.dataset.parallax)}px)`;
+    });
+  }, { passive: true });
+}
+
+// Typing animation for hero subtitle
+const heroSubtitle = document.querySelector('.heroSubtitle');
+if (heroSubtitle) {
+  const fullText = heroSubtitle.textContent.trim();
+  heroSubtitle.textContent = '';
+  const cursorSpan = document.createElement('span');
+  cursorSpan.className = 'typingCursor';
+  heroSubtitle.appendChild(cursorSpan);
+  let i = 0;
+  function typeNext() {
+    if (i < fullText.length) {
+      cursorSpan.insertAdjacentText('beforebegin', fullText[i++]);
+      setTimeout(typeNext, 55 + Math.random() * 35);
+    }
+  }
+  setTimeout(typeNext, 700);
+}
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 
@@ -65,8 +173,48 @@ window.addEventListener('scroll', updateActiveLink);
 window.addEventListener('resize', updateActiveLink);
 updateActiveLink();
 
+// Magic-line nav indicator
+const navIndicator    = document.querySelector('.navIndicator');
+const navlinksEl      = document.querySelector('.navlinks');
+
+if (navIndicator && navlinksEl) {
+  let isHovering = false;
+
+  function positionIndicator(el) {
+    const cRect = navlinksEl.getBoundingClientRect();
+    const lRect = el.getBoundingClientRect();
+    navIndicator.style.left    = (lRect.left - cRect.left) + 'px';
+    navIndicator.style.width   = lRect.width + 'px';
+    navIndicator.style.opacity = '1';
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      isHovering = true;
+      positionIndicator(link);
+    });
+  });
+
+  navlinksEl.addEventListener('mouseleave', () => {
+    isHovering = false;
+    const active = navlinksEl.querySelector('.navlink.active');
+    active ? positionIndicator(active) : (navIndicator.style.opacity = '0');
+  });
+
+  // Keep indicator in sync as scroll changes the active link
+  window.addEventListener('scroll', () => {
+    if (isHovering) return;
+    const active = navlinksEl.querySelector('.navlink.active');
+    active ? positionIndicator(active) : (navIndicator.style.opacity = '0');
+  });
+
+  // Initial position
+  const initialActive = navlinksEl.querySelector('.navlink.active');
+  if (initialActive) positionIndicator(initialActive);
+}
+
 // Fade-in animation on scroll
-const fadeCards = document.querySelectorAll('.projectCard, .contactCard, .timelineItem');
+const fadeCards = document.querySelectorAll('.projectCard, .contactCard, .timelineItem, .contactFormCard');
 
 fadeCards.forEach(function(card) {
   card.style.opacity = '0';
@@ -121,14 +269,14 @@ if (contactForm) {
             
             if (response.ok) {
                 contactForm.reset();
-                showFormStatus('✅ Message sent!', 'success');
+                showFormStatus('âœ… Message sent!', 'success');
             } else {
                 const data = await response.json();
                 const errorMessage = data?.errors?.[0]?.message || 'Oops! Something went wrong. Please try again.';
-                showFormStatus(`❌ ${errorMessage}`, 'error');
+                showFormStatus(`âŒ ${errorMessage}`, 'error');
             }
         } catch (error) {
-            showFormStatus('❌ Network error. Please check your connection.', 'error');
+            showFormStatus('âŒ Network error. Please check your connection.', 'error');
         } finally {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
@@ -178,3 +326,64 @@ tagWrappers.forEach(wrapper => {
   window.addEventListener('resize', updateButtons);
   updateButtons();
 });
+
+// Timeline rocket â€” follows hovered item
+const timelineEl     = document.querySelector('.timeline');
+const rocket         = document.querySelector('.timelineRocket');
+const timelineItems  = document.querySelectorAll('.timelineItem');
+
+if (timelineEl && rocket && timelineItems.length) {
+  const iconCenterY = (item) => {
+    const icon = item.querySelector('.timelineIcon');
+    const tlRect   = timelineEl.getBoundingClientRect();
+    const iconRect = icon.getBoundingClientRect();
+    return iconRect.top - tlRect.top + iconRect.height / 2;
+  };
+
+  timelineItems.forEach((item, i) => {
+    item.addEventListener('mouseenter', (e) => {
+      const isLast = i === timelineItems.length - 1;
+      const targetY = isLast
+        ? timelineEl.offsetHeight
+        : (iconCenterY(item) + iconCenterY(timelineItems[i + 1])) / 2;
+
+      rocket.style.top     = (targetY - rocket.offsetHeight / 2) + 'px';
+      rocket.style.opacity = '1';
+
+      // Use the cursor's entry point on the card to determine direction:
+      // entered from above card midpoint â†’ going down; from below â†’ going up.
+      // mouseenter fires at the moment of first crossing, so clientY reliably
+      // reflects which side the cursor came from regardless of prior state.
+      const itemRect = item.getBoundingClientRect();
+      const enteredFromAbove = e.clientY <= itemRect.top + itemRect.height / 2;
+      rocket.style.transform = enteredFromAbove
+        ? 'translateX(-50%) rotate(135deg)'
+        : 'translateX(-50%) rotate(-45deg)';
+    });
+  });
+
+  const experienceSection = document.querySelector('#experience');
+  (experienceSection || timelineEl).addEventListener('mouseleave', () => {
+    rocket.style.opacity = '0';
+  });
+}
+
+// Custom cursor
+const cursorDot = document.querySelector('.cursorDot');
+
+if (cursorDot) {
+  document.addEventListener('mousemove', e => {
+    cursorDot.style.left    = e.clientX + 'px';
+    cursorDot.style.top     = e.clientY + 'px';
+    cursorDot.style.opacity = '1';
+  });
+
+  document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; });
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
+  });
+}
+
