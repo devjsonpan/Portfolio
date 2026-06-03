@@ -95,7 +95,7 @@ if (starfield) {
     { type: 'planet',   left: '12%', top: '18%', size: 110, delay: '0s', parallax: 0.05 },
     { type: 'moon',     left: '80%', top: '10%', size: 42,  delay: '2s', parallax: 0.03 },
     { type: 'asteroid', left: '58%', top: '28%', size: 22,  delay: '3s', parallax: 0.08 },
-    { type: 'asteroid', left: '30%', top: '75%', size: 18,  delay: '5s', parallax: 0.06 }
+    { type: 'asteroid', left: '25%', top: '80%', size: 18,  delay: '5s', parallax: 0.06 }
   ];
 
   spaceObjects.forEach(object => {
