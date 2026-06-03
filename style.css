@@ -124,7 +124,7 @@ body {
         radial-gradient(ellipse 120% 8%  at 50% 58%, rgba(55, 20, 120, 0.32), transparent),
         /* Limb darkening */
         radial-gradient(circle at 50% 50%, transparent 52%, rgba(0, 0, 0, 0.58) 100%),
-        /* Main sphere â€” light source upper-left */
+        /* Main sphere - light source upper-left */
         radial-gradient(circle at 34% 30%, #d4bbff 0%, #9d6fff 18%, #6d28d9 42%, #3b0f8e 68%, #120530 100%);
     box-shadow:
         inset -12px -12px 28px rgba(0, 0, 0, 0.50),
@@ -135,7 +135,7 @@ body {
     overflow: hidden;
 }
 
-/* Soft diffuse glint â€” not a hard circle */
+/* Soft diffuse glint - not a hard circle */
 .space-object.planet::before {
     content: '';
     position: absolute;
@@ -1081,55 +1081,8 @@ body {
     }
 }
 
-/* â”€â”€ Custom cursor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-@media (pointer: fine) {
-    * { cursor: none !important; }
-}
 
-.cursorDot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    border: 1.5px solid var(--primary);
-    box-shadow: 0 0 8px rgba(99,102,241,0.65), inset 0 0 5px rgba(99,102,241,0.12);
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Vertical crosshair line */
-.cursorDot::before {
-    content: '';
-    position: absolute;
-    left: 50%; top: 50%;
-    width: 1px;
-    height: calc(100% + 14px);
-    background: var(--primary);
-    opacity: 0.6;
-    transform: translate(-50%, -50%);
-}
-
-/* Horizontal crosshair line */
-.cursorDot::after {
-    content: '';
-    position: absolute;
-    left: 50%; top: 50%;
-    width: calc(100% + 14px);
-    height: 1px;
-    background: var(--primary);
-    opacity: 0.6;
-    transform: translate(-50%, -50%);
-}
-
-.cursorDot.hovering {
-    transform: translate(-50%, -50%) scale(1.6);
-    box-shadow: 0 0 16px rgba(99,102,241,0.9), inset 0 0 8px rgba(99,102,241,0.2);
-}
-
-/* â”€â”€ Typing cursor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Typing cursor ------------------------------------------ */
 .typingCursor {
     display: inline-block;
     width: 2px;

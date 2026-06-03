@@ -81,7 +81,7 @@ if (starfield) {
     shootingStar.style.top = `${Math.random() * 40}%`;
     shootingStar.style.animationDelay = `${i * 7 + Math.random() * 5}s`;
     shootingStar.style.animationDuration = `${3 + Math.random() * 1.5}s`;
-    // Tight angle range 140â€“150Â°: steep downward-right, all stars look the same direction
+    // Angle range 140-150 degrees: steep downward-right, consistent direction
     const angle = 140 + Math.random() * 10;
     const dist = 1300 + Math.random() * 500;
     const rad = angle * Math.PI / 180;
@@ -302,14 +302,14 @@ if (contactForm) {
             
             if (response.ok) {
                 contactForm.reset();
-                showFormStatus('âœ… Message sent!', 'success');
+                showFormStatus('Message sent!', 'success');
             } else {
                 const data = await response.json();
                 const errorMessage = data?.errors?.[0]?.message || 'Oops! Something went wrong. Please try again.';
-                showFormStatus(`âŒ ${errorMessage}`, 'error');
+                showFormStatus(errorMessage, 'error');
             }
         } catch (error) {
-            showFormStatus('âŒ Network error. Please check your connection.', 'error');
+            showFormStatus('Network error. Please check your connection.', 'error');
         } finally {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
@@ -360,7 +360,7 @@ tagWrappers.forEach(wrapper => {
   updateButtons();
 });
 
-// Timeline rocket â€” follows hovered item
+// Timeline rocket - follows hovered item
 const timelineEl     = document.querySelector('.timeline');
 const rocket         = document.querySelector('.timelineRocket');
 const timelineItems  = document.querySelectorAll('.timelineItem');
@@ -384,7 +384,7 @@ if (timelineEl && rocket && timelineItems.length) {
       rocket.style.opacity = '1';
 
       // Use the cursor's entry point on the card to determine direction:
-      // entered from above card midpoint â†’ going down; from below â†’ going up.
+      // entered from above card midpoint -> going down; from below -> going up.
       // mouseenter fires at the moment of first crossing, so clientY reliably
       // reflects which side the cursor came from regardless of prior state.
       const itemRect = item.getBoundingClientRect();
@@ -400,23 +400,3 @@ if (timelineEl && rocket && timelineItems.length) {
     rocket.style.opacity = '0';
   });
 }
-
-// Custom cursor
-const cursorDot = document.querySelector('.cursorDot');
-
-if (cursorDot) {
-  document.addEventListener('mousemove', e => {
-    cursorDot.style.left    = e.clientX + 'px';
-    cursorDot.style.top     = e.clientY + 'px';
-    cursorDot.style.opacity = '1';
-  });
-
-  document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; });
-
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
-  });
-}
-
