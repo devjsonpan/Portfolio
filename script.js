@@ -37,8 +37,41 @@ if (starfield) {
     star.style.setProperty('--star-color', palette.color);
     star.style.setProperty('--star-glow-color', palette.glow);
     star.style.setProperty('--star-glow-size', palette.glowSize);
+    // Twinkle intensity: 55% faint, 35% mid, 10% strong
+    const twinkleRoll = Math.random();
+    star.style.animationName = twinkleRoll < 0.55 ? 'star-twinkle-faint'
+                             : twinkleRoll < 0.90 ? 'star-twinkle-mid'
+                             :                      'star-twinkle-strong';
     starfield.appendChild(star);
   }
+
+  // Star clusters — denser patches to mimic real night sky depth
+  const clusters = [
+    { cx: 68, cy: 18, count: 14, spread: 4.5 },
+    { cx: 22, cy: 48, count: 11, spread: 3.5 },
+    { cx: 82, cy: 72, count: 10, spread: 4.0 },
+  ];
+
+  clusters.forEach(({ cx, cy, count, spread }) => {
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = Math.pow(Math.random(), 0.5) * spread; // bias toward centre
+      const size  = 0.4 + Math.random() * 0.9;
+      star.style.width  = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left   = `${cx + Math.cos(angle) * dist}%`;
+      star.style.top    = `${cy + Math.sin(angle) * dist}%`;
+      star.style.animationDuration = `${2.5 + Math.random() * 3}s`;
+      star.style.animationDelay   = `${Math.random() * 6}s`;
+      star.style.animationName    = Math.random() < 0.7 ? 'star-twinkle-faint' : 'star-twinkle-mid';
+      star.style.setProperty('--star-color',      'rgba(210, 220, 255, 0.75)');
+      star.style.setProperty('--star-glow-color', 'rgba(180, 200, 255, 0.25)');
+      star.style.setProperty('--star-glow-size',  '2px');
+      starfield.appendChild(star);
+    }
+  });
 
   const shootingCount = 3;
   for (let i = 0; i < shootingCount; i++) {

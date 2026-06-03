@@ -42,7 +42,7 @@ body {
     border-radius: 50%;
     background: var(--star-color, rgba(255, 255, 255, 0.9));
     box-shadow: 0 0 var(--star-glow-size, 4px) var(--star-glow-color, rgba(255, 255, 255, 0.5));
-    animation: star-twinkle 4s infinite ease-in-out;
+    animation: star-twinkle-mid 4s infinite ease-in-out;
 }
 
 .starfield::before {
@@ -50,12 +50,16 @@ body {
     position: absolute;
     inset: 0;
     background:
-        /* Indigo cloud â€” bottom-left corner */
-        radial-gradient(ellipse 22% 16% at 6% 88%, rgba(99, 102, 241, 0.52), transparent 50%),
-        radial-gradient(ellipse 44% 30% at 6% 88%, rgba(79, 70, 229, 0.16), transparent 72%),
-        /* Teal cloud â€” bottom-right corner */
-        radial-gradient(ellipse 20% 14% at 92% 84%, rgba(20, 184, 166, 0.46), transparent 48%),
-        radial-gradient(ellipse 40% 28% at 92% 84%, rgba(45, 212, 191, 0.12), transparent 68%);
+        /* Purple atmospheric wash — upper left */
+        radial-gradient(ellipse 70% 50% at 8% 12%, rgba(99, 102, 241, 0.11), transparent 70%),
+        /* Blue wash — upper right */
+        radial-gradient(ellipse 60% 45% at 90% 8%,  rgba(59, 130, 246, 0.09), transparent 68%),
+        /* Violet wash — lower centre */
+        radial-gradient(ellipse 80% 38% at 50% 100%, rgba(139, 92, 246, 0.10), transparent 68%),
+        /* Teal accent — mid right */
+        radial-gradient(ellipse 45% 30% at 88% 58%, rgba(20, 184, 166, 0.07), transparent 65%),
+        /* Indigo accent — mid left */
+        radial-gradient(ellipse 40% 28% at 6%  55%, rgba(79, 70, 229, 0.07), transparent 65%);
     pointer-events: none;
 }
 
@@ -226,15 +230,19 @@ body {
     top: 58%;
 }
 
-@keyframes star-twinkle {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.4);
-    }
+@keyframes star-twinkle-faint {
+    0%, 100% { opacity: 0.55; transform: scale(1);    }
+    50%       { opacity: 0.9;  transform: scale(1.08); }
+}
+
+@keyframes star-twinkle-mid {
+    0%, 100% { opacity: 0.3;  transform: scale(1);    }
+    50%       { opacity: 1;    transform: scale(1.4);  }
+}
+
+@keyframes star-twinkle-strong {
+    0%, 100% { opacity: 0.12; transform: scale(1);    }
+    50%       { opacity: 1;    transform: scale(1.7);  }
 }
 
 @keyframes shooting {
