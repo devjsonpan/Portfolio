@@ -174,7 +174,7 @@ function initSectionBadge() {
     const p = POKEMON[next];
     if (!p) return;
     badge.style.setProperty('--badge-color', p.color);
-    badge.innerHTML = `<span class="sb-icon">${p.icon}</span><div class="sb-text"><span class="sb-name">${p.name}</span><span class="sb-type">${p.type}</span></div>`;
+    badge.innerHTML = `<div class="sb-inner"><span class="sb-icon">${p.icon}</span><div class="sb-text"><span class="sb-name">${p.name}</span><span class="sb-type">${p.type}</span></div></div>`;
   }
 
   window.addEventListener('scroll', update, { passive: true });

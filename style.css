@@ -199,12 +199,13 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Corner Pokémon Info Fan (covers AI watermark) ── */
+/* ── Corner Pokémon Info Fan (covers AI watermark) ── */
 #section-badge {
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 155px;
-  height: 155px;
+  width: 130px;
+  height: 130px;
   border-radius: 100% 0 0 0;
   background: rgba(9,11,20,0.86);
   border-top: 1.5px solid var(--badge-color, #f5c518);
@@ -219,33 +220,32 @@ img { display: block; max-width: 100%; }
   isolation: isolate;
   transition: border-color 0.45s ease;
 }
-.sb-icon {
+.sb-inner {
   position: absolute;
-  bottom: 3.2rem;
-  right: 3.8rem;
-  font-size: 1.35rem;
-  line-height: 1;
+  bottom: 1.1rem;
+  right: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
 }
+.sb-icon { font-size: 1rem; line-height: 1; flex-shrink: 0; }
 .sb-text {
-  position: absolute;
-  bottom: 1.2rem;
-  right: 1.1rem;
-  text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.08rem;
+  text-align: right;
 }
 .sb-name {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   color: var(--badge-color, #f5c518);
   transition: color 0.45s ease;
 }
 .sb-type {
   font-family: var(--mono);
-  font-size: 0.48rem;
+  font-size: 0.46rem;
   letter-spacing: 0.1em;
   color: var(--badge-color, #f5c518);
   opacity: 0.55;
