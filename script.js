@@ -148,6 +148,39 @@ function initContactForm() {
   });
 }
 
+/* ── Section Pokémon Badge ── */
+function initSectionBadge() {
+  const badge = document.getElementById('section-badge');
+  if (!badge) return;
+
+  const POKEMON = {
+    home:       { icon: '⚡', name: 'PIKACHU',    type: 'Electric', color: '#f5c518' },
+    projects:   { icon: '🔥', name: 'CHARMANDER', type: 'Fire',     color: '#ff6432' },
+    experience: { icon: '🌿', name: 'BULBASAUR',  type: 'Grass',    color: '#78c850' },
+    interests:  { icon: '💧', name: 'SQUIRTLE',   type: 'Water',    color: '#6ab8f7' },
+    contact:    { icon: '⭐', name: 'EEVEE',       type: 'Normal',   color: '#c8a878' },
+  };
+
+  const sections = document.querySelectorAll('section[id]');
+  let currentId = '';
+
+  function update() {
+    const mid = window.scrollY + window.innerHeight * 0.5;
+    let next = 'home';
+    sections.forEach(s => { if (mid >= s.offsetTop) next = s.id; });
+    if (next === currentId) return;
+    currentId = next;
+
+    const p = POKEMON[next];
+    if (!p) return;
+    badge.style.setProperty('--badge-color', p.color);
+    badge.innerHTML = `<span class="sb-icon">${p.icon}</span><div class="sb-text"><span class="sb-name">${p.name}</span><span class="sb-type">${p.type}</span></div>`;
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
 /* ── Stagger card reveals ── */
 function initStagger() {
   document.querySelectorAll('.proj-grid, .contact-cards').forEach(grid => {
@@ -165,4 +198,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initContactForm();
   initStagger();
+  initSectionBadge();
 });
