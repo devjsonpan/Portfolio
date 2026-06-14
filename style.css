@@ -199,7 +199,6 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Corner Pokémon Info Fan (covers AI watermark) ── */
-/* ── Corner Pokémon Info Fan (covers AI watermark) ── */
 #section-badge {
   position: fixed;
   bottom: 0;
@@ -480,20 +479,12 @@ img { display: block; max-width: 100%; }
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(80,140,255,0.025) 2px, rgba(80,140,255,0.025) 3px);
   pointer-events: none; z-index: 1;
 }
-.dex-num {
-  position: absolute;
-  top: 0.55rem; left: 0.7rem;
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  color: var(--yellow);
-  opacity: 0.6;
-  letter-spacing: 0.1em;
-  z-index: 2;
-}
 .proj-img {
-  width: 100%; height: 100%;
+  position: absolute;
+  inset: 0.6rem;
   object-fit: cover;
   object-position: top;
+  border-radius: 5px;
   transition: transform 0.4s ease, opacity 0.3s;
   opacity: 0.88;
 }
@@ -518,43 +509,6 @@ img { display: block; max-width: 100%; }
   flex: 1;
 }
 .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.dex-stats { display: flex; flex-direction: column; gap: 0.42rem; }
-.stat-row {
-  display: grid;
-  grid-template-columns: 76px 1fr 28px;
-  align-items: center;
-  gap: 0.55rem;
-}
-.stat-name {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
-  text-align: right;
-}
-.stat-bar {
-  height: 5px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.stat-fill {
-  height: 100%;
-  border-radius: 3px;
-  width: 0;
-  transition: width 1.3s cubic-bezier(0.22,1,0.36,1) 0.3s;
-}
-.proj-card.shown .stat-fill { width: calc(var(--w) * 1%); }
-.s1 { background: linear-gradient(90deg, #e63946, #f05460); }
-.s2 { background: linear-gradient(90deg, #ff6432, #ff8050); }
-.s3 { background: linear-gradient(90deg, #f5c518, #ffd740); }
-.s4 { background: linear-gradient(90deg, #4ec9ff, #80d8ff); }
-.stat-val {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  opacity: 0.7;
-}
 .dex-link {
   font-family: var(--mono);
   font-size: 0.75rem;
