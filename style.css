@@ -21,7 +21,11 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+  background: var(--bg);
+}
 body {
   font-family: var(--body);
   background: var(--bg);
@@ -204,8 +208,8 @@ img { display: block; max-width: 100%; }
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 130px;
-  height: 130px;
+  width: 125px;
+  height: 125px;
   border-radius: 100% 0 0 0;
   background: rgba(9,11,20,0.86);
   border-top: 1.5px solid var(--badge-color, #f5c518);
@@ -825,25 +829,34 @@ img { display: block; max-width: 100%; }
 /* ── Footer ── */
 footer {
   position: relative; z-index: 1;
-  text-align: center;
-  padding: 2.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.4rem 2rem;
   border-top: 1px solid rgba(245,197,24,0.12);
-  background: rgba(8,9,16,0.9);
+  background: rgba(8,9,16,0.97);
   backdrop-filter: blur(10px);
+}
+footer::before {
+  content: '';
+  width: 1px; height: 0.85rem;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
 }
 .footer-quote {
   font-family: var(--serif);
   font-style: italic;
   color: var(--text-dim);
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  order: -1;
 }
 .footer-copy {
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   color: var(--text-dim);
   letter-spacing: 0.1em;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 /* ── Responsive ── */
