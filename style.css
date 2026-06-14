@@ -72,26 +72,22 @@ img { display: block; max-width: 100%; }
   width: 18px;
   border-radius: 9px;
   background:
-    radial-gradient(ellipse at 35% 50%, rgba(255,235,130,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 35% 50%, rgba(255,255,255,0.18) 0%, transparent 55%),
     linear-gradient(180deg,
-      #2a1604 0%,
-      #7a4a08 8%,
-      #d49010 20%,
-      #f5c518 34%,
-      #e8b810 43%,
-      #0d0f1a 47%,
-      #0d0f1a 53%,
-      #e8b810 57%,
-      #f5c518 66%,
-      #d49010 80%,
-      #7a4a08 92%,
-      #2a1604 100%
+      #6b0000 0%,
+      #b82020 10%,
+      #e63946 28%,
+      #f04452 45%,
+      #e63946 55%,
+      #c42030 72%,
+      #901020 90%,
+      #6b0000 100%
     );
   box-shadow:
     0 0 0 1.5px rgba(0,0,0,0.8),
     0 6px 20px rgba(0,0,0,0.85),
-    0 0 16px rgba(245,197,24,0.22),
-    inset 2px 0 5px rgba(255,255,255,0.08);
+    0 0 14px rgba(230,57,70,0.35),
+    inset 2px 0 5px rgba(255,255,255,0.1);
 }
 #nav::before { left: -9px; }
 #nav::after  { right: -9px; }
