@@ -891,15 +891,29 @@ footer::before {
 @media (max-width: 768px) {
   .proj-card  { grid-template-columns: 1fr; }
   .dex-screen { min-height: 180px; border-right: none; border-bottom: 2px solid rgba(245,197,24,0.15); }
+  /* background-attachment: fixed is broken on iOS Safari */
+  .section { background-attachment: scroll; }
+  /* Interests: collapse two-column grid to single column */
+  .hobbies-panel { grid-template-columns: 1fr; }
+  /* Hobby feature cards: stack photo below text */
+  .hobby-feature-wrap { flex-direction: column; }
+  .hobby-photo { width: 100%; height: 200px; object-fit: cover; object-position: top; }
 }
 @media (max-width: 620px) {
-  #nav { top: 10px; width: calc(100vw - 20px); padding: 0 1.25rem; }
+  #nav { top: 10px; width: calc(100vw - 20px); padding: 0 1rem; }
   .brand-name { display: none; }
-  .nav-links { gap: 1.2rem; }
-  .nav-link { font-size: 0.75rem; }
+  /* Scrollable nav so Contact is always reachable */
+  .nav-links { gap: 0.7rem; overflow-x: auto; scrollbar-width: none; padding-right: 0.5rem; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 0.7rem; letter-spacing: 0.03em; flex-shrink: 0; }
   .hero-inner,
   .section-inner { padding: calc(var(--nav-h) + 40px) 1.25rem 60px; }
-  .section-head { flex-wrap: wrap; }
+  /* Kicker: reduce letter-spacing so it fits on one line */
+  .hero-kicker { font-size: 0.56rem; letter-spacing: 0.1em; }
+  /* Keep sec-box on same line as heading; let h2 wrap within itself */
+  .section-head { flex-wrap: nowrap; align-items: flex-start; }
+  .sec-box { width: 40px; height: 40px; font-size: 1.1rem; flex-shrink: 0; }
+  .section-head h2 { white-space: normal; font-size: 1.15rem; }
   .h-rule { display: none; }
   .scroll-cue { display: none; }
 }
