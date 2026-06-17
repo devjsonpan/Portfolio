@@ -57,7 +57,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
+  padding: 0 clamp(1rem, 2.5vw, 2.5rem);
   background: linear-gradient(90deg, rgba(9,11,20,0.97), rgba(14,17,30,0.97) 50%, rgba(9,11,20,0.97));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -136,7 +136,7 @@ img { display: block; max-width: 100%; }
   background: #0a0c1a;
 }
 
-.nav-links { display: flex; gap: 2rem; }
+.nav-links { display: flex; gap: clamp(0.9rem, 2vw, 2rem); }
 .nav-link {
   color: var(--text-dim);
   font-size: 0.82rem;
@@ -900,9 +900,11 @@ footer::before {
   .hobby-photo { width: 100%; height: 160px; object-fit: cover; object-position: top; }
   .hobby-photo--center { object-position: center; }
 }
+@media (max-width: 900px) {
+  .brand-name { display: none; }
+}
 @media (max-width: 620px) {
   #nav { top: 10px; width: calc(100vw - 20px); padding: 0 1rem; overflow: hidden; }
-  .brand-name { display: none; }
   /* Scrollable nav so Contact is always reachable */
   .nav-links { flex: 1; min-width: 0; justify-content: flex-start; gap: 0.7rem; overflow-x: auto; scrollbar-width: none; padding-right: 0.5rem; padding-left: 0.75rem; }
   .nav-links::-webkit-scrollbar { display: none; }
