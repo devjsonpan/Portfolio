@@ -153,12 +153,21 @@ function initSectionBadge() {
   const badge = document.getElementById('section-badge');
   if (!badge) return;
 
+  // Individually-cropped type icons (cut from images/pokemon-types.png).
+  const TYPE_ICON_FILE = {
+    grass:    'images/type-grass.png',
+    fire:     'images/type-fire.png',
+    water:    'images/type-water.png',
+    electric: 'images/type-electric.png',
+    normal:   'images/type-normal.png', // Colorless icon stands in for Normal type
+  };
+
   const POKEMON = {
-    home:       { icon: '⚡', name: 'PIKACHU',    type: 'Electric', color: '#f5c518' },
-    projects:   { icon: '🔥', name: 'CHARMANDER', type: 'Fire',     color: '#ff6432' },
-    experience: { icon: '🌿', name: 'BULBASAUR',  type: 'Grass',    color: '#78c850' },
-    interests:  { icon: '💧', name: 'SQUIRTLE',   type: 'Water',    color: '#6ab8f7' },
-    contact:    { icon: '⭐', name: 'EEVEE',       type: 'Normal',   color: '#c8a878' },
+    home:       { dex: '025', name: 'PIKACHU',    type: 'Electric', color: '#f5c518', colorRgb: '245,197,24', ht: '0.4m', wt: '6.0kg' },
+    projects:   { dex: '004', name: 'CHARMANDER', type: 'Fire',     color: '#ff6432', colorRgb: '255,100,50', ht: '0.6m', wt: '8.5kg' },
+    experience: { dex: '001', name: 'BULBASAUR',  type: 'Grass',    color: '#78c850', colorRgb: '120,200,80', ht: '0.7m', wt: '6.9kg' },
+    interests:  { dex: '007', name: 'SQUIRTLE',   type: 'Water',    color: '#6ab8f7', colorRgb: '106,184,247', ht: '0.5m', wt: '9.0kg' },
+    contact:    { dex: '133', name: 'EEVEE',      type: 'Normal',   color: '#c8a878', colorRgb: '200,168,120', ht: '0.3m', wt: '6.5kg' },
   };
 
   const sections = document.querySelectorAll('section[id]');
@@ -174,7 +183,24 @@ function initSectionBadge() {
     const p = POKEMON[next];
     if (!p) return;
     badge.style.setProperty('--badge-color', p.color);
-    badge.innerHTML = `<div class="sb-inner"><span class="sb-icon">${p.icon}</span><div class="sb-text"><span class="sb-name">${p.name}</span><span class="sb-type">${p.type}</span></div></div>`;
+    badge.style.setProperty('--badge-color-rgb', p.colorRgb);
+    const iconFile = TYPE_ICON_FILE[p.type.toLowerCase()];
+    badge.innerHTML = `
+      <div class="sb-inner">
+        <div class="sb-top">
+          <span class="sb-icon" style="background-image:url('${iconFile}')"></span>
+          <div class="sb-text">
+            <span class="sb-dex">No. ${p.dex}</span>
+            <span class="sb-name">${p.name}</span>
+            <span class="sb-type">${p.type}</span>
+          </div>
+        </div>
+        <div class="sb-divider"></div>
+        <div class="sb-stats">
+          <span class="sb-stat"><span class="sb-stat-label">HT</span> ${p.ht}</span>
+          <span class="sb-stat"><span class="sb-stat-label">WT</span> ${p.wt}</span>
+        </div>
+      </div>`;
   }
 
   window.addEventListener('scroll', update, { passive: true });

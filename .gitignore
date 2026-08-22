@@ -1,0 +1,8 @@
+# Editor / tool local state
+.vscode/
+.claude/
+.playwright-mcp/
+
+# OS junk
+.DS_Store
+Thumbs.db
