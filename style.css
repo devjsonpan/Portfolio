@@ -917,16 +917,16 @@ footer::before {
   .brand-name { display: none; }
 }
 @media (max-width: 620px) {
-  #nav { top: 10px; width: calc(100vw - 20px); padding: 0 1rem; overflow: hidden; }
-  /* Scrollable nav so Contact is always reachable */
+  #nav { top: 10px; width: calc(100vw - 20px); padding: 0 0.85rem; overflow: hidden; }
+  /* Sized to fit all 5 links without scrolling at common phone widths; overflow-x stays as a fallback on very narrow screens */
   .nav-links {
-    flex: 1; min-width: 0; justify-content: flex-start; gap: 0.9rem;
+    flex: 1; min-width: 0; justify-content: flex-start; gap: 0.5rem;
     overflow-x: auto; scrollbar-width: none;
-    padding: 0 1rem 0 0.85rem;
+    padding: 0 0.4rem;
     scroll-snap-type: x proximity;
   }
   .nav-links::-webkit-scrollbar { display: none; }
-  .nav-link { font-size: 0.64rem; letter-spacing: 0.03em; flex-shrink: 0; scroll-snap-align: start; }
+  .nav-link { font-size: 0.58rem; letter-spacing: 0.02em; flex-shrink: 0; scroll-snap-align: start; }
   .hero-inner,
   .section-inner { padding: calc(var(--nav-h) + 40px) 1.25rem 60px; }
   /* Kicker: slightly larger but tight letter-spacing */
